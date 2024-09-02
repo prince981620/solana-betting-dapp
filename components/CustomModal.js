@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Modal from "react-modal";
 import { useGlobalState } from "../hooks";
 import { getSolAmount } from "../utils";
+Modal.setAppElement('#__next'); // Ensuring that screen readers behave properly when a modal is open
+
 const styles = {
   formButtons: "flex flex-row justify-between px-2",
   button:
@@ -33,10 +35,10 @@ const CustomModal = ({
 
 
   // Static 
-  const staticEnterbet = () => {
-    console.log("Closing bet")
-  }
-
+  // const staticEnterbet = () => {
+  //   console.log("Closing bet")
+  // }
+const { enterBet } = useGlobalState();
 
   const onClose = () => {
     setHigh(selectedBet.high)
@@ -97,9 +99,10 @@ const CustomModal = ({
           value="Submit"
           className={`${styles.button
             }${" bg-[#5cdb5c] w-1/2 text-center mt-8 self-center px-2"}`}
-          onClick={(e) => {
-            e.preventDefault()
-            staticEnterBet(Number(p2Guess), selectedBet)
+          onClick={async (e) => {
+            e.preventDefault();
+            await enterBet(Number(p2Guess), selectedBet);
+            setShowModal(false)
           }}
         /> <input
             type="submit"

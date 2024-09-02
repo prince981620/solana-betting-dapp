@@ -1,5 +1,3 @@
-import { useState, useContext, useEffect } from "react";
-import { STOCKDATA } from "../data/asset.seed";
 const styles = {
   button:
     "rounded-lg py-2 px-5 text-[#ffffff] text-xs border-[#30363b] bg-[#1E2123] border",
@@ -15,7 +13,7 @@ const styles = {
 };
 // SOLANA STUFF
 import { useGlobalState } from "../hooks";
-import { getSolAmount, getCanEnterBet } from "../utils";
+import { getSolAmount } from "../utils";
 import { IoMdClose } from "react-icons/io";
 
 const AvailableBets = ({
@@ -23,17 +21,17 @@ const AvailableBets = ({
   setShowModal,
 }) => {
 
+const {allBets,closeBet,claimBet} = useGlobalState();
 
+  // // Static
+  // const allBets = []
 
-  // Static
-  const allBets = []
-
-  const staticCloseBet = () => {
-    console.log("Closing bet")
-  }
-  const staticClaimBet = () => {
-    console.log("Claiming bet")
-  }
+  // const staticCloseBet = () => {
+  //   console.log("Closing bet")
+  // }
+  // const staticClaimBet = () => {
+  //   console.log("Claiming bet")
+  // }
 
   return (
     <div className={styles.availableBetsContainer}>
@@ -54,9 +52,29 @@ const AvailableBets = ({
               <p className={styles.currentStockPriceAmount}>{getSolAmount(bet.amount)} SOL</p>
             </div>
             {console.log(Object.keys(bet.state)[0].toUpperCase())}
+            {Object.keys(bet.state)[0].toLocaleUpperCase() == "STARTED" ?
+            <div className={styles.button} onClick={()=>claimBet(bet)}>
+              CLAIM
+            </div>
+            : Object.keys(bet.state)[0].toLocaleUpperCase() == "PLAYERAWON" ? 
+            <div className={styles.button}>
+              PLAYER A WON
+            </div>
+            : Object.keys(bet.state)[0].toLocaleUpperCase() == "PLAYERBWON" ? 
+            <div className={styles.button}>
+              PLAYER A WON
+            </div>
+            : <div className={styles.button} onClick={()=>{
+              console.log(bet);
+              setSelectedBet(bet);
+              setShowModal(true);
+            }}>
+            ENTER Bet
+          </div>
+          }
 
             <IoMdClose className="hover:text-[#ffffff] text-2xl mr-4"
-              onClick={() => staticCloseBet(bet)}
+              onClick={() => closeBet(bet)}
             />
           </div>
         );

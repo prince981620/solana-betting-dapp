@@ -89,7 +89,7 @@ const Home = () => {
 
   const { allBets, createBet } = useGlobalState()
 
-  console.log(createBet, "Hello World")
+  // console.log(createBet, "Hello World")
 
   return (
     <div className={styles.wrapper}>
