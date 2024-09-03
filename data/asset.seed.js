@@ -1,7 +1,7 @@
 export const STOCKDATA = [
   {
     data: [10, 22, 34, 55, 72, 11, 22, 45, 92],
-    name: "AMC",
+    name: "100xDEVS",
     priceKey: "E4m5GPq53mayAxMSH8NwPuC75m83mQ47zpdtNDtxVzPf",
     price: 3.9,
     change: -1,

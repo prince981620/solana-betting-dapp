@@ -43,7 +43,7 @@ const {allBets,closeBet,claimBet} = useGlobalState();
             className={styles.availableBetsItem}
           >
             <p className={styles.stockName}>
-              AMC
+              100xDEVS
             </p>
             <div className={styles.currentStockPrice}>
               <p className={styles.currentStockPriceTitle}>
