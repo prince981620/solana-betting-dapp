@@ -1,6 +1,6 @@
 const styles = {
   button:
-    "rounded-lg py-2 px-5 text-[#ffffff] text-xs border-[#30363b] bg-[#1E2123] border",
+    "rounded-lg cursor-pointer py-2 px-5 text-[#ffffff] text-xs border-[#30363b] bg-[#1E2123] border",
   availableBetsContainer: "flex flex-col mt-4 border-t border-[#30363b] pt-2",
   availableBetsTitle: "text-[#ffffff] font-bolder text-lg ",
   stockName: "text-[#ffffff] font-bolder text-lg ml-4",
@@ -57,12 +57,12 @@ const {allBets,closeBet,claimBet} = useGlobalState();
               CLAIM
             </div>
             : Object.keys(bet.state)[0].toLocaleUpperCase() == "PLAYERAWON" ? 
-            <div className={styles.button}>
+            <div className="text-white">
               PLAYER A WON
             </div>
             : Object.keys(bet.state)[0].toLocaleUpperCase() == "PLAYERBWON" ? 
-            <div className={styles.button}>
-              PLAYER A WON
+            <div className="text-white">
+              PLAYER B WON
             </div>
             : <div className={styles.button} onClick={()=>{
               console.log(bet);
@@ -73,7 +73,7 @@ const {allBets,closeBet,claimBet} = useGlobalState();
           </div>
           }
 
-            <IoMdClose className="hover:text-[#ffffff] text-2xl mr-4"
+            <IoMdClose className="text-gray-700 hover:text-[#ffffff] text-2xl mr-4"
               onClick={() => closeBet(bet)}
             />
           </div>

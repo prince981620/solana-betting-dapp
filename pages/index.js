@@ -180,11 +180,12 @@ const Home = () => {
               />
               <input
                 className={styles.input}
-                placeholder={timeType}
+                placeholder="MINIMUM 150s"
                 type="number"
                 required
                 onChange={(e) => {
-                  setTime(e.target.value);
+                  console.log(typeof(Number(e.target.value)));
+                  setTime(Number(e.target.value));
                 }}
                 value={time}
               />
@@ -216,7 +217,7 @@ const Home = () => {
               disabled={availableStock.length === STOCKDATA.length}
               value="Submit"
               className={`${styles.button
-                }${" bg-[#ef4b09] w-1/4 text-center mt-8 self-center"}`}
+                }${" bg-[#ef4b09] cursor-pointer w-1/4 text-center mt-8 self-center"}`}
               onClick={(e) => {
                 e.preventDefault()
                 createBet(

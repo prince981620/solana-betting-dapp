@@ -57,7 +57,9 @@ export const GlobalState = ({children}) => {
     const fetchBets = useCallback(async()=>{
         if(!program) return;
         const allBetsResult = await program.account.bet.all();
+        // console.log(allBetsResult);
         const allBets = allBetsResult.map((bet)=>bet.account);
+        // console.log(allBets);
         setAllBets(allBets);
         // filter to get just the use bets
     },[program])
